@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christinas Shop | Handmade & Gifts</title>
+    <meta name="author" content="Konstantinos Georgoudis">
+    <link rel="icon" type="image/png" href="images/favico1.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --petrol-dark: #005f73;
+            --petrol-medium: #0a9396;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --white: #ffffff;
+            --gold: #e9d8a6;
+            --cursive-font: 'Dancing Script', cursive;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Comfortaa', cursive;
+            background: radial-gradient(circle at top right, #94d2bd, #0a9396, #005f73);
+            background-attachment: fixed;
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h3, .nav-links a, .logo {
+            font-family: var(--cursive-font);
+            letter-spacing: 1px;
+        }
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo { font-weight: 700; font-size: 2.2rem; color: var(--white); }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .custom-select { position: relative; display: inline-block; }
+        .select-selected {
+            background: var(--glass-bg);
+            padding: 8px 15px;
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .select-items {
+            position: absolute;
+            background: rgba(10, 147, 150, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            top: 100%; left: 0; right: 0;
+            display: none;
+            margin-top: 10px;
+            overflow: hidden;
+            z-index: 99;
+        }
+        .select-items div { padding: 10px; cursor: pointer; }
+        .select-items div:hover { background: var(--glass-bg); }
+        .select-show { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            max-width: 900px;
+        }
+
+        h1 { font-size: 4.5rem; margin-bottom: 5px; color: var(--gold); }
+        h2 { font-size: 1.8rem; margin-top: 0; }
+
+        .carousel-container { margin: 60px 0; overflow: hidden; width: 100%; background: rgba(0,0,0,0.1); padding: 20px 0; }
+        .carousel-track { display: flex; width: calc(250px * 20); animation: scroll 40s linear infinite; }
+        .carousel-track img { width: 220px; height: 300px; object-fit: cover; margin: 0 15px; border-radius: 15px; border: 3px solid var(--glass-border); }
+
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 10)); } }
+
+        /* --- New Layout for Info Section --- */
+        .info-section { 
+            padding: 80px 5%; 
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .combined-card { 
+            background: var(--glass-bg); 
+            padding: 40px; 
+            border-radius: 25px; 
+            border: 1px solid var(--glass-border); 
+            text-align: center;
+        }
+
+        .bottom-flex-row {
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .image-box {
+            flex: 1;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-box img {
+            max-width: 200px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .philosophy-box {
+            flex: 1.5;
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-section h3 { font-size: 2.5rem; margin-bottom: 15px; color: var(--gold); }
+
+        .footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.3); }
+        .btn-glass {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-glass:hover { background: var(--white); color: var(--petrol-dark); transform: scale(1.05); }
+
+        @media (max-width: 768px) { 
+            h1 { font-size: 2.5rem; } 
+            nav { width: 95%; padding: 10px 20px; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 70px; 
+                left: 0; 
+                width: 100%; 
+                background: rgba(10, 147, 150, 0.98); 
+                flex-direction: column; 
+                padding: 20px 0;
+                border-radius: 20px;
+                text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 10px 0; }
+            .hamburger { display: flex; }
+            .bottom-flex-row { flex-direction: column; }
+            .image-box { order: 2; }
+            .philosophy-box { text-align: center; order: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Christina's</div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" id="menu-home">HOME</a>
+            <a href="photos.html" id="menu-photos">PHOTOS</a>
+            <a href="products.html" id="menu-products">PRODUCTS</a>
+            <a href="contact.html" id="menu-contact">CONTACT</a>
+        </div>
+        
+        <div class="custom-select" id="langSwitcher">
+            <div class="select-selected" id="currentLang">English 🇬🇧</div>
+            <div class="select-items" id="langOptions">
+                <div onclick="changeLang('en')">English 🇬🇧</div>
+                <div onclick="changeLang('gr')">Ελληνικά 🇬🇷</div>
+                <div onclick="changeLang('nl')">Nederlands 🇳🇱</div>
+                <div onclick="changeLang('de')">Deutsch 🇩🇪</div>
+                <div onclick="changeLang('tr')">Türkçe 🇹🇷</div>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <section class="hero">
+        <div class="hero-card" data-aos="zoom-in">
+            <h1>Welcome to Christina's</h1>
+            <h2 id="hero-welcome">Style and quality for you</h2>
+            <p id="hero-items">MEN – WOMEN CLOTHES – JEWELRY – ACCESSORIES </p>
+            <p id="hero-try" style="font-weight: bold;">Kokkari , Samos , Greece</p>
+            <a href="contact.html" class="btn-glass" id="btn-contact-hero">Contact Us</a>
+        </div>
+    </section>
+
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <img src="images/2.jpeg" alt="img"><img src="images/9.jpeg" alt="img"><img src="images/32.jpeg" alt="img">
+            <img src="images/39.jpeg" alt="img"><img src="images/18.jpeg" alt="img"><img src="images/new.jpeg" alt="img">
+            <img src="images/hp.jpeg" alt="img"><img src="images/34.jpeg" alt="img"><img src="images/46.jpeg" alt="img"><img src="images/6.jpeg" alt="img">
+            <img src="images/2.jpeg" alt="img"><img src="images/9.jpeg" alt="img"><img src="images/32.jpeg" alt="img">
+            <img src="images/39.jpeg" alt="img"><img src="images/18.jpeg" alt="img"><img src="images/new.jpeg" alt="img">
+            <img src="images/hp.jpeg" alt="img"><img src="images/34.jpeg" alt="img"><img src="images/46.jpeg" alt="img"><img src="images/6.jpeg" alt="img">
+        </div>
+    </div>
+
+    <section class="info-section">
+        <div class="combined-card" data-aos="fade-up">
+            <h3 id="card1-title">Greek Products & Handmade Magic</h3>
+            <p id="card1-text">Ceramics, Gifts, Fragrances, Sunglasses. High quality Greek products at affordable prices.</p>
+            <p id="card2-text" style="margin-top: 15px;">Discover many handmade items. You can find beautiful gifts starting from only 5 Euros!</p>
+        </div>
+        
+        <div class="bottom-flex-row">
+            <div class="image-box" data-aos="fade-right">
+                <img src="images/favico.png" alt="Shop Icon">
+            </div>
+            
+            <div class="philosophy-box" data-aos="fade-left">
+                <h3 id="card3-title">Our Philosophy</h3>
+                <p id="card3-text">A warm, family environment. A smile and a good mood are always at your service.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p id="footer-text">For many years, our quality and prices have helped us grow and come closer to you.</p>
+        <a href="contact.html" class="btn-glass" id="btn-contact-footer">Contact Us</a>
+        <br>
+        <a href="privacy.html" class="btn-glass" style="font-size: 0.7rem;" id="btn-privacy">Privacy Policy & Cookies</a>
+        <p style="font-size: 0.8rem; margin-top: 20px;">&copy; 2026 Christinas Shop - Christina & Georgia</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        const switcher = document.getElementById('langSwitcher');
+        const options = document.getElementById('langOptions');
+        const currentLangDisplay = document.getElementById('currentLang');
+
+        switcher.addEventListener('click', (e) => {
+            e.stopPropagation();
+            options.classList.toggle('select-show');
+        });
+
+        const data = {
+            en: {
+                label: "English 🇬🇧", home: "HOME", photos: "PHOTOS", products: "PRODUCTS", contact: "CONTACT",
+                welcome: "Style and quality for you", items: "MEN – WOMEN CLOTHES – JEWELRY – ACCESSORIES ",
+                try: "Kokkari , Samos , Greece", btnContact: "Contact Us", privacy: "Privacy Policy & Cookies",
+                c1t: "Greek Products & Handmade Magic", c1d: "Ceramics, Gifts, Fragrances, Sunglasses. High quality Greek products at affordable prices.",
+                c2t: "Discover many handmade items. You can find beautiful gifts starting from only 5 Euros!",
+                c3t: "Our Philosophy", c3d: "A warm, family environment. A smile and a good mood are always at your service.",
+                footer: "For many years, our quality and prices have helped us grow and come closer to you."
+            },
+            gr: {
+                label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
+                welcome: "Στυλ Και Ποιότητα Για Εσάς ", items: "ΑΝΤΡΙΚΑ –  ΓΥΝΑΙΚΕΙΑ  ΡΟΥΧΑ – ΚΟΣΜΗΜΑΤΑ – ΑΞΕΣΟΥΑΡ ",
+                try: "Kokkari , Samos , Greece", btnContact: "Επικοινωνήστε μαζί μας", privacy: "Πολιτική Απορρήτου & Cookies",
+                c1t: "Ελληνικά Προϊόντα & Χειροποίητη Μαγεία", c1d: "Κεραμικά, Δώρα, Αρώματα, Γυαλιά Ηλίου. Υψηλή ποιότητα σε προσιτές τιμές.",
+                c2t: "Ανακαλύψτε πολλά χειροποίητα είδη. Θα βρείτε υπέροχα δώρα που ξεκινούν από μόλις 5 Ευρώ!",
+                c3t: "Η Φιλοσοφία μας", c3d: "Ένα ζεστό, οικογενειακό περιβάλλον. Το χαμόγελο και η καλή διάθεση είναι πάντα στη διάθεσή σας.",
+                footer: "Εδώ και πολλά χρόνια, η ποιότητα και οι τιμές μας, μας βοήθησαν να αναπτυχθούμε και να έρθουμε πιο κοντά σας."
+            },
+            nl: {
+                label: "Nederlands 🇳🇱", home: "HOME", photos: "FOTO'S", products: "PRODUCTEN", contact: "CONTACT",
+                welcome: "Stijl en kwaliteit voor jou", items: "HEREN – DAMES  KLEDING – SIERADEN – ACCESSOIRES",
+                try: "Kokkari , Samos , Greece", btnContact: "Neem contact op", privacy: "Privacybeleid & Cookies",
+                c1t: "Griekse Producten & Handgemaakte Magie", c1d: "Keramiek, Cadeaus, Geuren, Zonnebrillen. Griekse kwaliteit tegen betaalbare prijzen.",
+                c2t: "Ontdek handgemaakte items. Prachtige cadeaus vanaf slechts 5 Euro!",
+                c3t: "Onze Filosofie", c3d: "Een warme, familiale omgeving. Een glimlach staat altijd voor u klaar.",
+                footer: "Al vele jaren helpen onze kwaliteit en prijzen ons om te groeien."
+            },
+            de: {
+                label: "Deutsch 🇩🇪", home: "STARTSEITE", photos: "FOTOS", products: "PRODUKTE", contact: "KONTAKT",
+                welcome: "Stil und Qualität für Sie", items: "HERREN – DAMEN KLEIDUNG – SCHMUCK – ACCESSOIRES ",
+                try: "Kokkari , Samos , Greece", btnContact: "Kontaktieren Sie uns", privacy: "Datenschutz & Cookies",
+                c1t: "Griechische Produkte & Handgemachter Zauber", c1d: "Keramik, Geschenke, Düfte, Sonnenbrillen. Griechische Produkte zu fairen Preisen.",
+                c2t: "Entdecken Sie handgemachte Artikel. Schöne Geschenke schon ab 5 Euro!",
+                c3t: "Unsere Philosophie", c3d: "Ein herzliches, familiäres Umfeld. Ein Lächeln ist immer für Sie da.",
+                footer: "Seit vielen Jahren helfen uns Qualität und Preise, Ihnen näher zu kommen."
+            },
+            tr: {
+                label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", contact: "İLETİŞİM",
+                welcome: "Sizin için stil ve kalite", items: "ERKEK – KADIN GİYİM – TAKI – AKSESUAR ",
+                try: "Kokkari , Samos , Greece", btnContact: "Bize Ulaşın", privacy: "Gizlilik Politikası ve Çerezler",
+                c1t: "Yunan Ürünleri & El Yapımı Büyü", c1d: "Seramik, Hediyelik Eşya, Parfümler, Güneş Gözlükleri. Uygun fiyatlı kaliteli ürünler.",
+                c2t: "Birçok el yapımı ürünü keşfedin. 5 Euro'dan başlayan harika hediyeler!",
+                c3t: "Felsefemiz", c3d: "Sıcak, aile ortamı. Bir gülümseme ve iyi bir ruh hali her zaman hizmetinizdedir.",
+                footer: "Uzun yıllardır kalitemiz ve fiyatlarımız sizinle büyümemize yardımcı oluyor."
+            }
+        };
+
+        function changeLang(lang) {
+            const t = data[lang];
+            currentLangDisplay.innerHTML = t.label;
+            
+            document.getElementById('menu-home').innerText = t.home;
+            document.getElementById('menu-photos').innerText = t.photos;
+            document.getElementById('menu-products').innerText = t.products;
+            document.getElementById('menu-contact').innerText = t.contact;
+
+            document.getElementById('hero-welcome').innerText = t.welcome;
+            document.getElementById('hero-items').innerText = t.items;
+            document.getElementById('hero-try').innerText = t.try;
+            document.getElementById('btn-contact-hero').innerText = t.btnContact;
+
+            document.getElementById('card1-title').innerText = t.c1t;
+            document.getElementById('card1-text').innerText = t.c1d;
+            document.getElementById('card2-text').innerText = t.c2t;
+            document.getElementById('card3-title').innerText = t.c3t;
+            document.getElementById('card3-text').innerText = t.c3d;
+
+            document.getElementById('footer-text').innerText = t.footer;
+            document.getElementById('btn-contact-footer').innerText = t.btnContact;
+            document.getElementById('btn-privacy').innerText = t.privacy;
+            
+            options.classList.remove('select-show');
+            if(window.innerWidth <= 768) {
+                document.getElementById('navLinks').classList.remove('active');
+            }
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.select-selected')) {
+                options.classList.remove('select-show');
+            }
+        }
+    </script>
+</body>
+</html>
