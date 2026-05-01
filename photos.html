@@ -179,8 +179,21 @@
             .nav-links.active { display: flex; }
             .nav-links a { margin: 15px 0; font-size: 2rem; }
             .menu-btn { display: block; }
-            .masonry { column-count: 2; }
-            .wheel-container { display: none; }
+            .masonry { column-count: 2; column-gap: 10px; }
+            .masonry-item { padding: 5px; margin-bottom: 10px; }
+            
+            /* Εμφάνιση ρόδας στα κινητά με προσαρμογή */
+            .wheel-container { display: flex; height: 300px; perspective: 800px; }
+            .wheel { width: 120px; height: 160px; }
+            .wheel img:nth-child(1) { transform: rotateY(0deg) translateZ(160px); }
+            .wheel img:nth-child(2) { transform: rotateY(45deg) translateZ(160px); }
+            .wheel img:nth-child(3) { transform: rotateY(90deg) translateZ(160px); }
+            .wheel img:nth-child(4) { transform: rotateY(135deg) translateZ(160px); }
+            .wheel img:nth-child(5) { transform: rotateY(180deg) translateZ(160px); }
+            .wheel img:nth-child(6) { transform: rotateY(225deg) translateZ(160px); }
+            .wheel img:nth-child(7) { transform: rotateY(270deg) translateZ(160px); }
+            .wheel img:nth-child(8) { transform: rotateY(315deg) translateZ(160px); }
+            
             h1 { font-size: 3rem; }
         }
     </style>
@@ -308,7 +321,7 @@
             },
             tr: {
                 label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", history: "HİKAYEMİZ", contact: "İLETİŞİM",
-                title: "Galerimiz", slogan: "Sizin için stil ve kalite",
+                title: "Galerimiz", slogan: "Sizin için stil και kalite",
                 wheel: "Galeri", discover: "Dahası", collections: "Tüm Koleksiyonlar"
             }
         };
