@@ -225,6 +225,33 @@
             .image-box { order: 2; }
             .philosophy-box { text-align: center; order: 1; }
         }
+        .white-banner {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/white.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+    padding: 60px 40px;
+    margin-top: 40px;
+    border: 2px solid var(--gold);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.white-banner h3 {
+    font-size: 3rem !important;
+    margin-bottom: 10px;
+}
+
+.white-tag {
+    background: var(--gold);
+    color: var(--petrol-dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
     </style>
 </head>
 <body>
@@ -298,6 +325,16 @@
                 <p id="card3-text">A warm, family-friendly and welcoming environment, combined with a pleasant atmosphere and positive energy, is our top priority in order to provide you with the best possible service.</p>
             </div>
         </div>
+                
+        <div class="white-banner" data-aos="zoom-in">
+            <div class="white-tag" id="white-tag-text">Our Partner Shop</div>
+            <br>
+            <h3 id="white-title">WHITE Boutique</h3>
+            <p id="white-text" style="max-width: 700px; margin: 0 auto; font-size: 1.2rem; text-shadow: 1px 1px 10px rgba(0,0,0,0.5);">
+                Discover our sister shop "WHITE", located just a breath away in the next alley. A dedicated space for women's high-fashion with unique, elegant collections.
+            </p>
+        </div>
+    </div>
     </section>
 
     <footer class="footer">
@@ -332,7 +369,8 @@
                 try: "Kokkari , Samos , Greece", btnContact: "Contact Us", privacy: "Privacy Policy & Cookies",
                 c1t: "Greek Products & Handmade Magic", c1d: "In our store, quality and price are perfectly balanced. You will find a wide variety of women’s and men’s clothing, handmade jewelry and accessories, always reflecting the quality that represents us. We also offer ceramics crafted with care and love, adding a joyful touch to your home. In our space, you will also discover a great selection of gifts for yourself and your loved ones.",
                 c3t: "Our Philosophy", c3d: "A warm, family-friendly and welcoming environment, combined with a pleasant atmosphere and positive energy, is our top priority in order to provide you with the best possible service.",
-                footer: "For many years, our quality and prices have helped us grow and come closer to you."
+                footer: "For many years, our quality and prices have helped us grow and come closer to you.", // Προστέθηκε κόμμα
+                whiteTag: "Our Partner Shop", whiteTitle: "WHITE Boutique", whiteDesc: "Discover our sister shop 'WHITE', located just a breath away in the next alley. A dedicated space for women's high-fashion with unique, elegant collections."
             },
             gr: {
                 label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", history: "ΙΣΤΟΡΙΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
@@ -340,15 +378,17 @@
                 try: "Κοκκάρι , Σάμος , Ελλάδα", btnContact: "Επικοινωνήστε μαζί μας", privacy: "Πολιτική Απορρήτου & Cookies",
                 c1t: "Ελληνικά Προϊόντα & Χειροποίητη Μαγεία", c1d: "Στο κατάστημά μας, η ποιότητα και η τιμή συνδυάζονται αρμονικά. Θα βρείτε γυναικεία και ανδρικά ρούχα σε μεγάλη ποικιλία, χειροποίητα κοσμήματα και αξεσουάρ, πάντα με την ποιότητα που μας αντιπροσωπεύει. Επιπλέον, διαθέτουμε κεραμικά φτιαγμένα με μεράκι και αγάπη, για να δώσουν μια χαρούμενη πινελιά στο σπίτι σας. Στον χώρο μας θα ανακαλύψετε επίσης μεγάλη ποικιλία δώρων, τόσο για εσάς όσο και για τα αγαπημένα σας πρόσωπα.",
                 c3t: "Η Φιλοσοφία μας", c3d: "Ένα ζεστό, οικογενειακό και φιλικό περιβάλλον, με όμορφη διάθεση και θετική ενέργεια, αποτελεί για εμάς προτεραιότητα, ώστε να σας προσφέρουμε την καλύτερη δυνατή εξυπηρέτηση.",
-                footer: "Για πολλά χρόνια, η ποιότητα και οι τιμές μας μας βοήθησαν να μεγαλώσουμε και να έρθουμε πιο κοντά σας."
+                footer: "Για πολλά χρόνια, η ποιότητα και οι τιμές μας μας βοήθησαν να μεγαλώσουμε και να έρθουμε πιο κοντά σας.", // Προστέθηκε κόμμα
+                whiteTag: "Συνεργαζόμενο Κατάστημα", whiteTitle: "WHITE Boutique", whiteDesc: "Ανακαλύψτε το αδερφάκι μας κατάστημα 'WHITE', που βρίσκεται μόλις ένα στενό παρακάτω. Ένας χώρος αφιερωμένος αποκλειστικά στη γυναικεία μόδα με κομψές και ιδιαίτερες συλλογές."
             },
             nl: {
                 label: "Nederlands 🇳🇱", home: "HOME", photos: "FOTO'S", products: "PRODUCTEN", history: "HISTORIE", contact: "CONTACT",
                 welcome: "Welkom bij Christina's", welcomeSub: "Stijl en kwaliteit voor jou", items: "HEREN – DAMES KLEDING – SIERADEN – ACCESSOIRES",
                 try: "Kokkari , Samos , Griekenland", btnContact: "Neem contact op", privacy: "Privacybeleid & Cookies",
                 c1t: "Griekse Producten & Handgemaakte Magie", c1d: "In onze winkel gaan kwaliteit en prijs hand in hand. U vindt er een ruime keuze aan dames- en herenkleding, handgemaakte sieraden en accessoires, altijd met de kwaliteit die ons kenmerkt. Daarnaast bieden wij keramiek aan, met zorg en liefde gemaakt, om een vrolijke toets aan uw huis te geven. In onze winkel ontdekt u ook een grote selectie cadeaus voor uzelf en uw dierbaren.”",
-                c3t: "Onze Filosofie", c3d: "Een warme, familiale en vriendelijke omgeving, gecombineerd met een prettige sfeer en positieve energie, is onze prioriteit om u de best mogelijke service te bieden.",
-                footer: "Sinds vele jaren hebben onze kwaliteit en prijzen ons geholpen te groeien en dichter bij u te komen."
+                c3t: "Onze Filosofie", c3d: "Een warme, familiale en vriendelijke omgeving, gecombineerd mit een prettige sfeer en positieve energie, is onze prioriteit om u de best mogelijke service te bieden.",
+                footer: "Sinds vele jaren hebben onze kwaliteit en prijzen ons geholpen te groeien en dichter bij u te komen.", // Προστέθηκε κόμμα
+                whiteTag: "Onze Partnerwinkel", whiteTitle: "WHITE Boutique", whiteDesc: "Ontdek onze zusterwinkel 'WHITE', slechts een steegje verderop. Een speciale plek voor damesmode van hoge kwaliteit met unieke, elegante collecties."
             },
             de: {
                 label: "Deutsch 🇩🇪", home: "STARTSEITE", photos: "FOTOS", products: "PRODUKTE", history: "GESCHICHTE", contact: "KONTAKT",
@@ -356,15 +396,17 @@
                 try: "Kokkari , Samos , Griechenland", btnContact: "Kontaktieren Sie uns", privacy: "Datenschutz & Cookies",
                 c1t: "Griechische Produkte & Handgemachter Zauber", c1d: "In unserem Geschäft gehen Qualität and Preis Hand in Hand. Sie finden bei uns eine große Auswahl an Damen- und Herrenbekleidung, handgefertigtem Schmuck und Accessoires, stets mit der Qualität, die uns auszeichnet. Darüber hinaus bieten wir Keramik an, die mit Liebe und Sorgfalt hergestellt wird und Ihrem Zuhause eine fröhliche Note verleiht. In unserem Geschäft entdecken Sie außerdem eine große Auswahl an Geschenken für sich selbst und Ihre Liebsten.",
                 c3t: "Unsere Philosophie", c3d: "Eine warme, familiäre und freundliche Umgebung, verbunden mit einer angenehmen Atmosphäre und positiver Energie, ist unsere Priorität, um Ihnen den bestmöglichen Service zu bieten.",
-                footer: "Seit vielen Jahren haben uns unsere Qualität und unsere Preise geholfen zu wachsen und Ihnen näher zu kommen."
+                footer: "Seit vielen Jahren haben uns unsere Qualität und unsere Preise geholfen zu wachsen und Ihnen näher zu kommen.", // Προστέθηκε κόμμα
+                whiteTag: "Unser Partner-Shop", whiteTitle: "WHITE Boutique", whiteDesc: "Entdecken Sie unseren Partnershop 'WHITE', der nur eine Gasse weiter liegt. Ein besonderer Ort für hochwertige Damenmode mit einzigartigen, eleganten Kollektionen."
             },
             tr: {
                 label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", history: "HİKAYEMİZ", contact: "İLETİŞİM",
                 welcome: "Christina's'a Hoş Geldiniz", welcomeSub: "Sizin için stil ve kalite", items: "ERKEK – KADIN GİYİM – TAKI – AKSESUAR ",
                 try: "Kokkari , Sisam , Yunanistan", btnContact: "Bize Ulaşın", privacy: "Gizlilik Politikası ve Çerezler",
-                c1t: "Yunan Ürünleri & El Yapımı Büyü", c1d: "Mağazamızda kalite ve fiyat uyum içinde buluşur. Geniş bir kadın ve erkek giyim koleksiyonu, el yapımı takılar ve aksesuarlar, her zaman bizi temsil eden kaliteyle sizleri bekliyor. Ayrıca, özen ve sevgiyle hazırlanmış seramik ürünlerimiz evinize neşeli bir dokunuş katacak. Mağazamızda kendiniz και sevdikleriniz için geniş bir hediye seçeneği de bulabilirsiniz.",
+                c1t: "Yunan Ürünleri & El Yapımı Büyü", c1d: "Mağazamızda kalite ve fiyat uyum içinde buluşur. Geniş bir kadın ve erkek giyim koleksiyonu, el yapımı takılar ve aksesuarlar, her zaman bizi temsil eden kaliteyle sizleri bekliyor. Ayrıca, özen και sevgiyle hazırlanmış seramik ürünlerimiz evinize neşeli bir dokunuş katacak. Mağazamızda kendiniz και sevdikleriniz için geniş bir hediye seçeneği de bulabilirsiniz.",
                 c3t: "Felsefemiz", c3d: "Sıcak, aile dostu ve samimi bir ortam, hoş bir atmosfer και pozitif enerji ile birlikte, sizlere en iyi hizmeti sunabilmek için önceliğimizdir.",
-                footer: "Uzun yıllardır kalitemiz ve fiyatlarımız büyümemize και size daha yakın olmamıza yardımcı oldu."
+                footer: "Uzun yıllardır kalitemiz και fiyatlarımız büyümemize και size daha yakın olmamıza yardımcı oldu.", // Προστέθηκε κόμμα
+                whiteTag: "Partner Mağazamız", whiteTitle: "WHITE Boutique", whiteDesc: "Sadece bir ara sokak ötede bulunan kardeş mağazamız 'WHITE'ı keşfedin. Eşsiz ve zarif koleksiyonlarıyla kadın modasına adanmış özel bir alan."
             }
         };
 
@@ -391,6 +433,9 @@
             document.getElementById('footer-text').innerText = t.footer;
             document.getElementById('btn-contact-footer').innerText = t.btnContact;
             document.getElementById('btn-privacy').innerText = t.privacy;
+            document.getElementById('white-tag-text').innerText = t.whiteTag;
+            document.getElementById('white-title').innerText = t.whiteTitle;
+            document.getElementById('white-text').innerText = t.whiteDesc;
             
             options.classList.remove('select-show');
             if(window.innerWidth <= 768) {
