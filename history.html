@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History | Christina's Shop</title>
+    <link rel="icon" type="image/png" href="images/favico.png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --petrol-dark: #005f73;
+            --petrol-medium: #0a9396;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --white: #ffffff;
+            --gold: #e9d8a6;
+            --cursive-font: 'Dancing Script', cursive;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Comfortaa', cursive;
+            background: radial-gradient(circle at top right, #94d2bd, #0a9396, #005f73);
+            background-attachment: fixed;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            z-index: 2000;
+        }
+
+        .logo { font-family: var(--cursive-font); font-weight: 700; font-size: 2.2rem; }
+
+        .nav-links { 
+            display: flex; 
+            align-items: center; 
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            margin: 0 20px;
+            font-family: var(--cursive-font);
+            font-size: 1.8rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Language Switcher */
+        .custom-select { position: relative; }
+        .select-selected {
+            background: var(--glass-bg);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border: 1px solid var(--glass-border);
+        }
+        .select-items {
+            position: absolute;
+            background: rgba(10, 147, 150, 0.95);
+            border-radius: 15px;
+            top: 110%; right: 0;
+            display: none;
+            min-width: 120px;
+            z-index: 99;
+        }
+        .select-items div { padding: 10px; cursor: pointer; font-size: 0.9rem; }
+        .select-show { display: block; }
+
+        /* --- Content Layout --- */
+        .container { max-width: 1000px; margin: 150px auto 50px; padding: 20px; }
+        
+        .history-section {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            text-align: center;
+        }
+
+        .story-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .story-block:nth-child(even) { flex-direction: row-reverse; }
+
+        .story-text { flex: 1; text-align: left; }
+        .story-text h2 { font-family: var(--cursive-font); color: var(--gold); font-size: 2.5rem; margin-top: 0; }
+        .story-text p { line-height: 1.8; font-size: 1.1rem; }
+
+        .story-img {
+            flex: 1;
+            max-width: 450px;
+            border-radius: 25px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: 0.5s;
+        }
+        .story-img:hover { transform: scale(1.02); }
+
+        .final-message {
+            margin-top: 50px;
+            font-family: var(--cursive-font);
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .story-block, .story-block:nth-child(even) { flex-direction: column; padding: 20px; }
+            .nav-links {
+                display: none; flex-direction: column; top: 80px; width: 100%;
+                background: rgba(10, 147, 150, 0.98); border-radius: 20px; padding: 30px 0;
+                left: 50%; transform: translateX(-50%);
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+            .logo { font-size: 1.6rem; }
+            .story-text h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Christina's</div>
+        <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" id="menu-home">HOME</a>
+            <a href="photos.html" id="menu-photos">PHOTOS</a>
+            <a href="products.html" id="menu-products">PRODUCTS</a>
+            <a href="history.html" id="menu-history" style="color: var(--gold);">HISTORY</a>
+             <a href="contact.html" id="menu-contact">CONTACT</a>
+        </div>
+
+        <div class="custom-select" id="langSwitcher">
+            <div class="select-selected" id="currentLang">English 🇬🇧</div>
+            <div class="select-items" id="langOptions">
+                <div onclick="changeLang('en')">English 🇬🇧</div>
+                <div onclick="changeLang('gr')">Ελληνικά 🇬🇷</div>
+                <div onclick="changeLang('nl')">Nederlands 🇳🇱</div>
+                <div onclick="changeLang('de')">Deutsch 🇩🇪</div>
+                <div onclick="changeLang('tr')">Türkçe 🇹🇷</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align:center; font-family: var(--cursive-font); font-size: 4.5rem; color: var(--gold); margin-bottom: 50px;" data-aos="zoom-in" id="page-title">Our Story</h1>
+
+        <div class="history-section">
+            
+            <div class="story-block" data-aos="fade-right">
+                <div class="story-text">
+                    <h2 id="block1-title">The Beginning</h2>
+                    <p id="block1-p">
+                        Christina's journey began 25 years ago when my mother, Georgia, decided to open a small, 
+                        sweet shop in a beautiful alley of Kokkari. Her talent in fashion and her incredible 
+                        energy played a decisive role in the evolution of the business. Always a step ahead 
+                        of the trends, she constantly sought new ideas and managed to thrive in the world of trade.
+                    </p>
+                </div>
+                <img src="images/old.png" alt="Old Shop" class="story-img">
+            </div>
+
+            <div class="story-block" data-aos="fade-left">
+                <div class="story-text">
+                    <h2 id="block2-title">Expansion (2019)</h2>
+                    <p id="block2-p">
+                        In 2019, we moved to a new and larger location in the Kokkari square. This allowed 
+                        space for all of Georgia's pioneering ideas—not only in clothing but in many other areas. 
+                        It was a new chapter that brought us closer to the heart of Samos.
+                    </p>
+                </div>
+                <img src="images/new.png" alt="New Shop" class="story-img">
+            </div>
+
+            <div class="story-block" data-aos="fade-up">
+                <div class="story-text">
+                    <h2 id="block3-title">Mother & Daughter</h2>
+                    <p id="block3-p">
+                        Today, I, Christina, proudly follow in my mother's footsteps. Together and united, 
+                        we put our best selves forward, following the path of evolution with positive energy. 
+                        Our goal remains the best possible service for you, with love and style.
+                    </p>
+                </div>
+                <img src="images/8.jpeg" alt="Today" class="story-img">
+            </div>
+
+        </div>
+
+        <div class="final-message" data-aos="zoom-in" id="final-msg">
+            Thank you for being part of our history!
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 50px; background: rgba(0,0,0,0.2);">
+        <p>&copy; 2026 Christinas Shop</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+        const switcher = document.getElementById('langSwitcher');
+        const options = document.getElementById('langOptions');
+        const currentLangDisplay = document.getElementById('currentLang');
+
+        switcher.addEventListener('click', (e) => {
+            e.stopPropagation();
+            options.classList.toggle('select-show');
+        });
+
+        const data = {
+            en: {
+                label: "English 🇬🇧", home: "HOME", history: "HISTORY", photos: "PHOTOS", products: "PRODUCTS", contact: "CONTACT",
+                title: "Our Story",
+                b1t: "The Beginning", b1p: "Christina's journey began 25 years ago when my mother, Georgia, decided to open a small, sweet shop in a beautiful alley of Kokkari. Her talent in fashion and her incredible energy played a decisive role in the evolution of the business. Always a step ahead of the trends, she constantly sought new ideas and managed to thrive in the world of trade.",
+                b2t: "Expansion (2019)", b2p: "In 2019, we moved to a new and larger location in the Kokkari square. This allowed space for all of Georgia's pioneering ideas—not only in clothing but in many other areas. It was a new chapter that brought us closer to the heart of Samos.",
+                b3t: "Mother & Daughter", b3p: "Today, I, Christina, proudly follow in my mother's footsteps. Together and united, we put our best selves forward, following the path of evolution with positive energy. Our goal remains the best possible service for you, with love and style.",
+                final: "Thank you for being part of our history!"
+            },
+            gr: {
+                label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", history: "ΙΣΤΟΡΙΑ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
+                title: "Η Ιστορία μας",
+                b1t: "Το Ξεκίνημα", b1p: "Η ιστορία του Christina's ξεκίνησε πριν από 25 χρόνια όταν η μητέρα μου, Γεωργία, αποφάσισε να ανοίξει ένα μικρό γλυκό μαγαζάκι σε ένα όμορφο δρομάκι του Κοκκαρίου. Το ταλέντο της στον τομέα της ένδυσης καθώς και η απίστευτη ενέργειά της έπαιξαν καθοριστικό ρόλο στην εξέλιξη της επιχείρησης. Πάντα ένα βήμα μπροστά στην μόδα, κατάφερε να επιβιώσει στον κόσμο του εμπορίου.",
+                b2t: "Η Μετακόμιση (2019)", b2p: "Έτσι λοιπόν το 2019 μεταφερθήκαμε σε καινούριο και μεγαλύτερο χώρο στην πλατεία του Κοκκαρίου για να μπορούν να χωρέσουν όλες οι πρωτοποριακές ιδέες της Γεωργίας, όχι μόνο στην ένδυση πλέον αλλά και σε πολλά άλλα είδη.",
+                b3t: "Μαμά & Κόρη", b3p: "Έτσι λοιπόν και εγώ η Χριστίνα ακολουθώ με υπερηφάνεια τα βήματα της μητέρας μου και μαζί πλέον ενωμένες βάζουμε τον καλύτερο μας εαυτό ακολουθώντας τον δρόμο της εξέλιξης με θετική ενέργεια για την καλύτερη εξυπηρέτησή σας.",
+                final: "Σας ευχαριστούμε που είστε μέρος της ιστορίας μας!"
+            },
+            nl: {
+                label: "Nederlands 🇳🇱", home: "HOME", history: "HISTORIE", photos: "FOTO'S", products: "PRODUCTEN", contact: "CONTACT",
+                title: "Ons Verhaal",
+                b1t: "Het Begin", b1p: "De reis van Christina's begon 25 jaar geleden toen mijn moeder, Georgia, besloot een kleine, lieflijke winkel te openen in een prachtig steegje van Kokkari. Haar talent voor mode en haar ongelooflijke energie speelden een doorslaggevende rol in de evolutie van het bedrijf.",
+                b2t: "Uitbreiding (2019)", b2p: "In 2019 verhuisden we naar een nieuwe en grotere locatie aan het Kokkari-plein. Dit bood ruimte voor al de baanbrekende ideeën van Georgia - niet alleen in kleding maar op vele andere gebieden.",
+                b3t: "Moeder & Dochter", b3p: "Vandaag volg ik, Christina, met trots de voetsporen van mijn moeder. Samen en verenigd zetten we ons beste beentje voor, de weg van evolutie volgend met positieve energy.",
+                final: "Bedankt dat u deel uitmaakt van onze geschiedenis!"
+            },
+            de: {
+                label: "Deutsch 🇩🇪", home: "STARTSEITE", history: "GESCHICHTE", photos: "FOTOS", products: "PRODUKTE", contact: "KONTAKT",
+                title: "Unsere Geschichte",
+                b1t: "Der Anfang", b1p: "Christina's Reise begann vor 25 Jahren, als meine Mutter Georgia beschloss, einen kleinen, süßen Laden in einer wunderschönen Gasse von Kokkari zu eröffnen. Ihr Talent für Mode und ihre unglaubliche Energie spielten eine entscheidende Rolle.",
+                b2t: "Erweiterung (2019)", b2p: "Im Jahr 2019 sind wir in ein neues und größeres Geschäft am Kokkari-Platz umgezogen. Dies bot Platz für all die wegweisenden Ideen von Georgia - nicht nur in der Mode.",
+                b3t: "Mutter & Tochter", b3p: "Heute trete ich, Christina, stolz in die Fußstapfen meiner Mutter. Gemeinsam und vereint geben wir unser Bestes und folgen dem Weg der Entwicklung mit positiver Energie.",
+                final: "Danke, dass Sie Teil unserer Geschichte sind!"
+            },
+            tr: {
+                label: "Türkçe 🇹🇷", home: "ANASAYFA", history: "HİKAYEMİZ", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", contact: "İLETİŞİM",
+                title: "Hikayemiz",
+                b1t: "Başlangıç", b1p: "Christina's nın yolculuğu 25 yıl önce annem Georgia'nın Kokkari'nin güzel bir sokağında küçük, tatlı bir dükkan açmaya karar vermesiyle başladı. Modadaki yeteneği ve inanılmaz enerjisi dükkanın gelişiminde kilit rol oynadı.",
+                b2t: "Büyüme (2019)", b2p: "2019 yılında Kokkari meydanındaki yeni ve daha büyük yerimize taşındık. Bu, Georgia'nın sadece giyimde değil, pek çok alandaki öncü fikirlerine yer açtı.",
+                b3t: "Anne & Kız", b3p: "Bugün ben Christina, gururla annemin izinden gidiyorum. Birlikte ve birleşmiş olarak, gelişim yolunda pozitif enerjiyle en iyi halimizi ortaya koyuyoruz.",
+                final: "Hikayemizin bir parçası olduğunuz için teşekkürler!"
+            }
+        };
+
+        function changeLang(lang) {
+            const t = data[lang];
+            currentLangDisplay.innerHTML = t.label;
+            document.getElementById('menu-home').innerText = t.home;
+            document.getElementById('menu-history').innerText = t.history;
+            document.getElementById('menu-photos').innerText = t.photos;
+            document.getElementById('menu-products').innerText = t.products;
+            document.getElementById('menu-contact').innerText = t.contact;
+            document.getElementById('page-title').innerText = t.title;
+            
+            document.getElementById('block1-title').innerText = t.b1t;
+            document.getElementById('block1-p').innerText = t.b1p;
+            document.getElementById('block2-title').innerText = t.b2t;
+            document.getElementById('block2-p').innerText = t.b2p;
+            document.getElementById('block3-title').innerText = t.b3t;
+            document.getElementById('block3-p').innerText = t.b3p;
+            document.getElementById('final-msg').innerText = t.final;
+
+            options.classList.remove('select-show');
+        }
+
+        window.onclick = () => options.classList.remove('select-show');
+    </script>
+</body>
+</html>

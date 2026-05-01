@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Christina's Shop</title>
+    <link rel="icon" type="image/png" href="images/favico.png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --petrol-dark: #005f73;
+            --petrol-medium: #0a9396;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --white: #ffffff;
+            --gold: #e9d8a6;
+            --cursive-font: 'Dancing Script', cursive;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Comfortaa', cursive;
+            background: radial-gradient(circle at top right, #94d2bd, #0a9396, #005f73);
+            background-attachment: fixed;
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            z-index: 2000;
+        }
+
+        .logo { font-family: var(--cursive-font); font-weight: 700; font-size: 1.8rem; }
+
+        /* Language Switcher */
+        .custom-select { position: relative; }
+        .select-selected {
+            background: var(--glass-bg);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border: 1px solid var(--glass-border);
+        }
+        .select-items {
+            position: absolute;
+            background: rgba(10, 147, 150, 0.95);
+            border-radius: 15px;
+            top: 110%; right: 0;
+            display: none;
+            min-width: 120px;
+            z-index: 99;
+        }
+        .select-items div { padding: 10px; cursor: pointer; font-size: 0.9rem; }
+        .select-show { display: block; }
+
+        /* --- Content --- */
+        .container { max-width: 850px; margin: 120px auto 50px; padding: 40px; background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 30px; border: 1px solid var(--glass-border); }
+        h1 { font-family: var(--cursive-font); color: var(--gold); font-size: 3rem; text-align: center; margin-top: 0; }
+        h2 { color: var(--gold); border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-top: 35px; }
+        p { font-size: 1rem; margin-bottom: 15px; }
+        .back-btn { display: inline-block; margin-top: 30px; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 12px 25px; border-radius: 25px; transition: 0.3s; }
+        .back-btn:hover { background: var(--gold); color: var(--petrol-dark); }
+
+        /* Cookie Banner Style */
+        #cookie-banner {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px; background: rgba(0, 95, 115, 0.95);
+            border: 1px solid var(--gold); padding: 20px; border-radius: 20px;
+            z-index: 9999; display: none; text-align: center; backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Christina's</div>
+        <div class="custom-select" id="langSwitcher">
+            <div class="select-selected" id="currentLang">English 🇬🇧</div>
+            <div class="select-items" id="langOptions">
+                <div onclick="changeLang('en')">English 🇬🇧</div>
+                <div onclick="changeLang('gr')">Ελληνικά 🇬🇷</div>
+                <div onclick="changeLang('nl')">Nederlands 🇳🇱</div>
+                <div onclick="changeLang('de')">Deutsch 🇩🇪</div>
+                <div onclick="changeLang('tr')">Türkçe 🇹🇷</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 id="page-title">Privacy Policy</h1>
+        
+        <section>
+            <h2 id="sec1-title">1. General Information & Copyright</h2>
+            <p id="sec1-p">All content on this website, including texts and visual materials (images/old.png, images/new.png, 50.jpg, etc.), is the exclusive property of <strong>Christina's Shop</strong> in Kokkari, Samos. Any unauthorized reproduction or use is strictly prohibited.</p>
+        </section>
+
+        <section>
+            <h2 id="sec2-title">2. Data Collection (FormSubmit)</h2>
+            <p id="sec2-p">We only collect data that you provide via our contact form (Name, Email, Phone, Message). This information is securely processed through <strong>FormSubmit</strong> and is used solely to communicate with you and answer your inquiries.</p>
+        </section>
+
+        <section>
+            <h2 id="sec3-title">3. Third-Party Services</h2>
+            <p id="sec3-p">Our website integrates <strong>Google Maps</strong> to help you find our location in Kokkari Square. Google may collect technical data such as your IP address in accordance with their privacy policy.</p>
+        </section>
+
+        <section>
+            <h2 id="sec4-title">4. Cookies</h2>
+            <p id="sec4-p">We use basic cookies to remember your language selection and to ensure the smooth operation of the website. By using our site, you agree to this use.</p>
+        </section>
+
+        <a href="index.html" class="back-btn" id="btn-home">← Back to Home</a>
+    </div>
+
+    <div id="cookie-banner">
+        <p id="cookie-text" style="margin: 0 0 15px 0; font-size: 0.9rem;">We use cookies to improve your experience. By clicking "Accept", you consent to our use of cookies.</p>
+        <button onclick="acceptCookies()" id="cookie-btn" style="background: #e9d8a6; color: #005f73; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer; font-weight: bold;">Accept</button>
+    </div>
+
+    <script>
+        const switcher = document.getElementById('langSwitcher');
+        const options = document.getElementById('langOptions');
+        const currentLangDisplay = document.getElementById('currentLang');
+
+        switcher.addEventListener('click', (e) => {
+            e.stopPropagation();
+            options.classList.toggle('select-show');
+        });
+
+        const data = {
+            en: {
+                label: "English 🇬🇧", title: "Privacy Policy", home: "← Back to Home",
+                s1t: "1. General Information & Copyright", s1p: "All content on this website, including texts and visual materials (images/old.png, images/new.png, 50.jpg, etc.), is the exclusive property of Christina's Shop in Kokkari, Samos. Any unauthorized reproduction or use is strictly prohibited.",
+                s2t: "2. Data Collection (FormSubmit)", s2p: "We only collect data that you provide via our contact form (Name, Email, Phone, Message). This information is securely processed through FormSubmit and is used solely to communicate with you.",
+                s3t: "3. Third-Party Services", s3p: "Our website integrates Google Maps to help you find our location in Kokkari Square. Google may collect technical data such as your IP address.",
+                s4t: "4. Cookies", s4p: "We use basic cookies to remember your language selection and to ensure the smooth operation of the website.",
+                ctext: "We use cookies to improve your experience. By clicking 'Accept', you consent to our use of cookies.", cbtn: "Accept"
+            },
+            gr: {
+                label: "Ελληνικά 🇬🇷", title: "Πολιτική Απορρήτου", home: "← Επιστροφή",
+                s1t: "1. Γενικές Πληροφορίες & Πνευματικά Δικαιώματα", s1p: "Όλο το περιεχόμενο αυτού του ιστότοπου, συμπεριλαμβανομένων των κειμένων και των εικόνων (images/old.png, images/new.png, 50.jpg, κ.λπ.), αποτελεί αποκλειστική ιδιοκτησία του Christina's Shop στο Κοκκάρι Σάμου. Απαγορεύεται η οποιαδήποτε αναπαραγωγή.",
+                s2t: "2. Συλλογή Δεδομένων (FormSubmit)", s2p: "Συλλέγουμε μόνο τα δεδομένα που παρέχετε μέσω της φόρμας επικοινωνίας. Αυτές οι πληροφορίες επεξεργάζονται μέσω της υπηρεσίας FormSubmit αποκλειστικά για την επικοινωνία μαζί σας.",
+                s3t: "3. Υπηρεσίες Τρίτων", s3p: "Ο ιστότοπός μας χρησιμοποιεί τους χάρτες της Google για την εύρεση της τοποθεσίας μας. Η Google ενδέχεται να συλλέγει δεδομένα όπως η διεύθυνση IP σας.",
+                s4t: "4. Cookies", s4p: "Χρησιμοποιούμε βασικά cookies για να θυμόμαστε τη γλώσσα σας και για την ομαλή λειτουργία της σελίδας.",
+                ctext: "Χρησιμοποιούμε cookies για να βελτιώσουμε την εμπειρία σας. Πατώντας 'Αποδοχή', συναινείτε στη χρήση τους.", cbtn: "Αποδοχή"
+            },
+            nl: {
+                label: "Nederlands 🇳🇱", title: "Privacybeleid", home: "← Terug naar Home",
+                s1t: "1. Algemene Informatie & Auteursrecht", s1p: "Alle inhoud op deze website, inclusief teksten en afbeeldingen, is exclusief eigendom van Christina's Shop in Kokkari, Samos. Ongeautoriseerd gebruik είναι verboden.",
+                s2t: "2. Gegevensverzameling (FormSubmit)", s2p: "Wij verzamelen alleen gegevens die u verstrekt via ons contactformulier. Deze informatie wordt veilig verwerkt via FormSubmit.",
+                s3t: "3. Diensten van Derden", s3p: "Onze website gebruikt Google Maps. Google kan gegevens zoals uw IP-adres verzamelen volgens hun privacybeleid.",
+                s4t: "4. Cookies", s4p: "Wij gebruiken basiscookies om uw taalkeuze te onthouden en voor een goede werking van de site.",
+                ctext: "Wij gebruiken cookies om uw ervaring te verbeteren. Door op 'Accepteren' te klikken, stemt u in met het gebruik van cookies.", cbtn: "Accepteren"
+            },
+            de: {
+                label: "Deutsch 🇩🇪", title: "Datenschutzerklärung", home: "← Zurück zur Startseite",
+                s1t: "1. Allgemeine Informationen & Urheberrecht", s1p: "Alle Inhalte dieser Website, einschließlich Texte und Bilder, sind exklusives Eigentum von Christina's Shop in Kokkari, Samos.",
+                s2t: "2. Datenerhebung (FormSubmit)", s2p: "Wir sammeln nur Daten, die Sie über unser Kontaktformular angeben. Diese Informationen werden sicher über FormSubmit verarbeitet.",
+                s3t: "3. Dienste von Drittanbietern", s3p: "Unsere Website integriert Google Maps. Google kann technische Daten wie Ihre IP-Adresse erfassen.",
+                s4t: "4. Cookies", s4p: "Wir verwenden Basiscookies, um Ihre Sprachauswahl zu speichern und den Betrieb der Website zu gewährleisten.",
+                ctext: "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Mit dem Klick auf 'Akzeptieren' stimmen Sie deren Verwendung zu.", cbtn: "Akzeptieren"
+            },
+            tr: {
+                label: "Türkçe 🇹🇷", title: "Gizlilik Politikası", home: "← Ana Sayfaya Dön",
+                s1t: "1. Genel Bilgiler ve Telif Hakkı", s1p: "Metinler ve görseller dahil bu web sitesindeki tüm içerik, Kokkari, Sisam'daki Christina's Shop'un münhasır mülkiyetindedir.",
+                s2t: "2. Veri Toplama (FormSubmit)", s2p: "Yalnızca iletişim formumuz aracılığıyla sağladığınız verileri topluyoruz. Bu bilgiler FormSubmit aracılığıyla güvenli bir şekilde işlenir.",
+                s3t: "3. Üçüncü Taraf Hizmetleri", s3p: "Web sitemiz Google Haritalar'ı kullanmaktadır. Google, IP adresiniz gibi teknik verileri toplayabilir.",
+                s4t: "4. Çerezler", s4p: "Dil seçiminizi hatırlamak ve web sitesinin sorunsuz çalışmasını sağlamak için temel çerezler kullanıyoruz.",
+                ctext: "Deneyiminizi geliştirmek için çerezler kullanıyoruz. 'Kabul Et'e tıklayarak çerez kullanımını onaylamış olursunuz.", cbtn: "Kabul Et"
+            }
+        };
+
+        function changeLang(lang) {
+            const t = data[lang];
+            currentLangDisplay.innerHTML = t.label;
+            document.getElementById('page-title').innerText = t.title;
+            document.getElementById('btn-home').innerText = t.home;
+            document.getElementById('sec1-title').innerText = t.s1t;
+            document.getElementById('sec1-p').innerHTML = t.s1p;
+            document.getElementById('sec2-title').innerText = t.s2t;
+            document.getElementById('sec2-p').innerText = t.s2p;
+            document.getElementById('sec3-title').innerText = t.s3t;
+            document.getElementById('sec3-p').innerText = t.s3p;
+            document.getElementById('sec4-title').innerText = t.s4t;
+            document.getElementById('sec4-p').innerText = t.s4p;
+            
+            // Cookie banner update
+            document.getElementById('cookie-text').innerText = t.ctext;
+            document.getElementById('cookie-btn').innerText = t.cbtn;
+
+            options.classList.remove('select-show');
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Cookie Banner Logic
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
+        window.onload = function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+            
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            changeLang(savedLang);
+        }
+
+        window.onclick = () => options.classList.remove('select-show');
+    </script>
+</body>
+</html>

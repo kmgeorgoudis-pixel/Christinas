@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christinas Shop | Handmade & Gifts</title>
     <meta name="author" content="Konstantinos Georgoudis">
-    <link rel="icon" type="image/png" href="images/favico1.png">
+    <link rel="icon" type="image/png" href="images/favico.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -129,12 +129,11 @@
         h2 { font-size: 1.8rem; margin-top: 0; }
 
         .carousel-container { margin: 60px 0; overflow: hidden; width: 100%; background: rgba(0,0,0,0.1); padding: 20px 0; }
-        .carousel-track { display: flex; width: calc(250px * 20); animation: scroll 40s linear infinite; }
+        .carousel-track {  display: flex; width: max-content; animation: scroll 40s linear infinite; }
         .carousel-track img { width: 220px; height: 300px; object-fit: cover; margin: 0 15px; border-radius: 15px; border: 3px solid var(--glass-border); }
 
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 10)); } }
 
-        /* --- New Layout for Info Section --- */
         .info-section { 
             padding: 80px 5%; 
             display: flex;
@@ -242,6 +241,7 @@
             <a href="index.html" id="menu-home">HOME</a>
             <a href="photos.html" id="menu-photos">PHOTOS</a>
             <a href="products.html" id="menu-products">PRODUCTS</a>
+            <a href="history.html" id="menu-history">HISTORY</a>
             <a href="contact.html" id="menu-contact">CONTACT</a>
         </div>
         
@@ -269,20 +269,22 @@
 
     <div class="carousel-container">
         <div class="carousel-track">
-            <img src="images/2.jpeg" alt="img"><img src="images/9.jpeg" alt="img"><img src="images/32.jpeg" alt="img">
-            <img src="images/39.jpeg" alt="img"><img src="images/18.jpeg" alt="img"><img src="images/new.jpeg" alt="img">
-            <img src="images/hp.jpeg" alt="img"><img src="images/34.jpeg" alt="img"><img src="images/46.jpeg" alt="img"><img src="images/6.jpeg" alt="img">
-            <img src="images/2.jpeg" alt="img"><img src="images/9.jpeg" alt="img"><img src="images/32.jpeg" alt="img">
-            <img src="images/39.jpeg" alt="img"><img src="images/18.jpeg" alt="img"><img src="images/new.jpeg" alt="img">
-            <img src="images/hp.jpeg" alt="img"><img src="images/34.jpeg" alt="img"><img src="images/46.jpeg" alt="img"><img src="images/6.jpeg" alt="img">
+            
+            <img src="images/all.jpg" alt="img"><img src="images/body.jpeg" alt="img"><img src="images/body2.jpg" alt="img">
+            <img src="images/door.jpeg" alt="img"><img src="images/kolie2.jpeg" alt="img"><img src="images/mens.jpeg" alt="img">
+            <img src="images/royxa.jpeg" alt="img"><img src="images/out.jpg" alt="img"><img src="images/keramika.jpeg" alt="img"><img src="images/out2.jpg" alt="img">
+            
+            
+            <img src="images/all.jpg" alt="img"><img src="images/body.jpeg" alt="img"><img src="images/body2.jpg" alt="img">
+            <img src="images/door.jpeg" alt="img"><img src="images/kolie2.jpeg" alt="img"><img src="images/mens.jpeg" alt="img">
+            <img src="images/royxa.jpeg" alt="img"><img src="images/out.jpg" alt="img"><img src="images/keramika.jpeg" alt="img"><img src="images/out2.jpg" alt="img">
         </div>
     </div>
 
     <section class="info-section">
         <div class="combined-card" data-aos="fade-up">
             <h3 id="card1-title">Greek Products & Handmade Magic</h3>
-            <p id="card1-text">Ceramics, Gifts, Fragrances, Sunglasses. High quality Greek products at affordable prices.</p>
-            <p id="card2-text" style="margin-top: 15px;">Discover many handmade items. You can find beautiful gifts starting from only 5 Euros!</p>
+            <p id="card1-text">In our store, quality and price are perfectly balanced. You will find a wide variety of women’s and men’s clothing, handmade jewelry and accessories, always reflecting the quality that represents us. We also offer ceramics crafted with care and love, adding a joyful touch to your home. In our space, you will also discover a great selection of gifts for yourself and your loved ones.</p>
         </div>
         
         <div class="bottom-flex-row">
@@ -292,7 +294,7 @@
             
             <div class="philosophy-box" data-aos="fade-left">
                 <h3 id="card3-title">Our Philosophy</h3>
-                <p id="card3-text">A warm, family environment. A smile and a good mood are always at your service.</p>
+                <p id="card3-text">A warm, family-friendly and welcoming environment, combined with a pleasant atmosphere and positive energy, is our top priority in order to provide you with the best possible service.</p>
             </div>
         </div>
     </section>
@@ -324,49 +326,44 @@
 
         const data = {
             en: {
-                label: "English 🇬🇧", home: "HOME", photos: "PHOTOS", products: "PRODUCTS", contact: "CONTACT",
-                welcome: "Style and quality for you", items: "MEN – WOMEN CLOTHES – JEWELRY – ACCESSORIES ",
+                label: "English 🇬🇧", home: "HOME", photos: "PHOTOS", products: "PRODUCTS", history: "HISTORY", contact: "CONTACT",
+                welcome: "Welcome to Christina's", welcomeSub: "Style and quality for you", items: "MEN – WOMEN CLOTHES – JEWELRY – ACCESSORIES ",
                 try: "Kokkari , Samos , Greece", btnContact: "Contact Us", privacy: "Privacy Policy & Cookies",
-                c1t: "Greek Products & Handmade Magic", c1d: "Ceramics, Gifts, Fragrances, Sunglasses. High quality Greek products at affordable prices.",
-                c2t: "Discover many handmade items. You can find beautiful gifts starting from only 5 Euros!",
-                c3t: "Our Philosophy", c3d: "A warm, family environment. A smile and a good mood are always at your service.",
+                c1t: "Greek Products & Handmade Magic", c1d: "In our store, quality and price are perfectly balanced. You will find a wide variety of women’s and men’s clothing, handmade jewelry and accessories, always reflecting the quality that represents us. We also offer ceramics crafted with care and love, adding a joyful touch to your home. In our space, you will also discover a great selection of gifts for yourself and your loved ones.",
+                c3t: "Our Philosophy", c3d: "A warm, family-friendly and welcoming environment, combined with a pleasant atmosphere and positive energy, is our top priority in order to provide you with the best possible service.",
                 footer: "For many years, our quality and prices have helped us grow and come closer to you."
             },
             gr: {
-                label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
-                welcome: "Στυλ Και Ποιότητα Για Εσάς ", items: "ΑΝΤΡΙΚΑ –  ΓΥΝΑΙΚΕΙΑ  ΡΟΥΧΑ – ΚΟΣΜΗΜΑΤΑ – ΑΞΕΣΟΥΑΡ ",
-                try: "Kokkari , Samos , Greece", btnContact: "Επικοινωνήστε μαζί μας", privacy: "Πολιτική Απορρήτου & Cookies",
-                c1t: "Ελληνικά Προϊόντα & Χειροποίητη Μαγεία", c1d: "Κεραμικά, Δώρα, Αρώματα, Γυαλιά Ηλίου. Υψηλή ποιότητα σε προσιτές τιμές.",
-                c2t: "Ανακαλύψτε πολλά χειροποίητα είδη. Θα βρείτε υπέροχα δώρα που ξεκινούν από μόλις 5 Ευρώ!",
-                c3t: "Η Φιλοσοφία μας", c3d: "Ένα ζεστό, οικογενειακό περιβάλλον. Το χαμόγελο και η καλή διάθεση είναι πάντα στη διάθεσή σας.",
-                footer: "Εδώ και πολλά χρόνια, η ποιότητα και οι τιμές μας, μας βοήθησαν να αναπτυχθούμε και να έρθουμε πιο κοντά σας."
+                label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", history: "ΙΣΤΟΡΙΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
+                welcome: "Καλώς ήρθατε στο Christina's", welcomeSub: "Στυλ Και Ποιότητα Για Εσάς ", items: "ΑΝΤΡΙΚΑ – ΓΥΝΑΙΚΕΙΑ ΡΟΥΧΑ – ΚΟΣΜΗΜΑΤΑ – ΑΞΕΣΟΥΑΡ ",
+                try: "Κοκκάρι , Σάμος , Ελλάδα", btnContact: "Επικοινωνήστε μαζί μας", privacy: "Πολιτική Απορρήτου & Cookies",
+                c1t: "Ελληνικά Προϊόντα & Χειροποίητη Μαγεία", c1d: "Στο κατάστημά μας, η ποιότητα και η τιμή συνδυάζονται αρμονικά. Θα βρείτε γυναικεία και ανδρικά ρούχα σε μεγάλη ποικιλία, χειροποίητα κοσμήματα και αξεσουάρ, πάντα με την ποιότητα που μας αντιπροσωπεύει. Επιπλέον, διαθέτουμε κεραμικά φτιαγμένα με μεράκι και αγάπη, για να δώσουν μια χαρούμενη πινελιά στο σπίτι σας. Στον χώρο μας θα ανακαλύψετε επίσης μεγάλη ποικιλία δώρων, τόσο για εσάς όσο και για τα αγαπημένα σας πρόσωπα.",
+                c3t: "Η Φιλοσοφία μας", c3d: "Ένα ζεστό, οικογενειακό και φιλικό περιβάλλον, με όμορφη διάθεση και θετική ενέργεια, αποτελεί για εμάς προτεραιότητα, ώστε να σας προσφέρουμε την καλύτερη δυνατή εξυπηρέτηση.",
+                footer: "Για πολλά χρόνια, η ποιότητα και οι τιμές μας μας βοήθησαν να μεγαλώσουμε και να έρθουμε πιο κοντά σας."
             },
             nl: {
-                label: "Nederlands 🇳🇱", home: "HOME", photos: "FOTO'S", products: "PRODUCTEN", contact: "CONTACT",
-                welcome: "Stijl en kwaliteit voor jou", items: "HEREN – DAMES  KLEDING – SIERADEN – ACCESSOIRES",
-                try: "Kokkari , Samos , Greece", btnContact: "Neem contact op", privacy: "Privacybeleid & Cookies",
-                c1t: "Griekse Producten & Handgemaakte Magie", c1d: "Keramiek, Cadeaus, Geuren, Zonnebrillen. Griekse kwaliteit tegen betaalbare prijzen.",
-                c2t: "Ontdek handgemaakte items. Prachtige cadeaus vanaf slechts 5 Euro!",
-                c3t: "Onze Filosofie", c3d: "Een warme, familiale omgeving. Een glimlach staat altijd voor u klaar.",
-                footer: "Al vele jaren helpen onze kwaliteit en prijzen ons om te groeien."
+                label: "Nederlands 🇳🇱", home: "HOME", photos: "FOTO'S", products: "PRODUCTEN", history: "HISTORIE", contact: "CONTACT",
+                welcome: "Welkom bij Christina's", welcomeSub: "Stijl en kwaliteit voor jou", items: "HEREN – DAMES KLEDING – SIERADEN – ACCESSOIRES",
+                try: "Kokkari , Samos , Griekenland", btnContact: "Neem contact op", privacy: "Privacybeleid & Cookies",
+                c1t: "Griekse Producten & Handgemaakte Magie", c1d: "In onze winkel gaan kwaliteit en prijs hand in hand. U vindt er een ruime keuze aan dames- en herenkleding, handgemaakte sieraden en accessoires, altijd met de kwaliteit die ons kenmerkt. Daarnaast bieden wij keramiek aan, met zorg en liefde gemaakt, om een vrolijke toets aan uw huis te geven. In onze winkel ontdekt u ook een grote selectie cadeaus voor uzelf en uw dierbaren.”",
+                c3t: "Onze Filosofie", c3d: "Een warme, familiale en vriendelijke omgeving, gecombineerd met een prettige sfeer en positieve energie, is onze prioriteit om u de best mogelijke service te bieden.",
+                footer: "Sinds vele jaren hebben onze kwaliteit en prijzen ons geholpen te groeien en dichter bij u te komen."
             },
             de: {
-                label: "Deutsch 🇩🇪", home: "STARTSEITE", photos: "FOTOS", products: "PRODUKTE", contact: "KONTAKT",
-                welcome: "Stil und Qualität für Sie", items: "HERREN – DAMEN KLEIDUNG – SCHMUCK – ACCESSOIRES ",
-                try: "Kokkari , Samos , Greece", btnContact: "Kontaktieren Sie uns", privacy: "Datenschutz & Cookies",
-                c1t: "Griechische Produkte & Handgemachter Zauber", c1d: "Keramik, Geschenke, Düfte, Sonnenbrillen. Griechische Produkte zu fairen Preisen.",
-                c2t: "Entdecken Sie handgemachte Artikel. Schöne Geschenke schon ab 5 Euro!",
-                c3t: "Unsere Philosophie", c3d: "Ein herzliches, familiäres Umfeld. Ein Lächeln ist immer für Sie da.",
-                footer: "Seit vielen Jahren helfen uns Qualität und Preise, Ihnen näher zu kommen."
+                label: "Deutsch 🇩🇪", home: "STARTSEITE", photos: "FOTOS", products: "PRODUKTE", history: "GESCHICHTE", contact: "KONTAKT",
+                welcome: "Willkommen bei Christina's", welcomeSub: "Stil und Qualität für Sie", items: "HERREN – DAMEN KLEIDUNG – SCHMUCK – ACCESSOIRES ",
+                try: "Kokkari , Samos , Griechenland", btnContact: "Kontaktieren Sie uns", privacy: "Datenschutz & Cookies",
+                c1t: "Griechische Produkte & Handgemachter Zauber", c1d: "In unserem Geschäft gehen Qualität and Preis Hand in Hand. Sie finden bei uns eine große Auswahl an Damen- und Herrenbekleidung, handgefertigtem Schmuck und Accessoires, stets mit der Qualität, die uns auszeichnet. Darüber hinaus bieten wir Keramik an, die mit Liebe und Sorgfalt hergestellt wird und Ihrem Zuhause eine fröhliche Note verleiht. In unserem Geschäft entdecken Sie außerdem eine große Auswahl an Geschenken für sich selbst und Ihre Liebsten.",
+                c3t: "Unsere Philosophie", c3d: "Eine warme, familiäre und freundliche Umgebung, verbunden mit einer angenehmen Atmosphäre und positiver Energie, ist unsere Priorität, um Ihnen den bestmöglichen Service zu bieten.",
+                footer: "Seit vielen Jahren haben uns unsere Qualität und unsere Preise geholfen zu wachsen und Ihnen näher zu kommen."
             },
             tr: {
-                label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", contact: "İLETİŞİM",
-                welcome: "Sizin için stil ve kalite", items: "ERKEK – KADIN GİYİM – TAKI – AKSESUAR ",
-                try: "Kokkari , Samos , Greece", btnContact: "Bize Ulaşın", privacy: "Gizlilik Politikası ve Çerezler",
-                c1t: "Yunan Ürünleri & El Yapımı Büyü", c1d: "Seramik, Hediyelik Eşya, Parfümler, Güneş Gözlükleri. Uygun fiyatlı kaliteli ürünler.",
-                c2t: "Birçok el yapımı ürünü keşfedin. 5 Euro'dan başlayan harika hediyeler!",
-                c3t: "Felsefemiz", c3d: "Sıcak, aile ortamı. Bir gülümseme ve iyi bir ruh hali her zaman hizmetinizdedir.",
-                footer: "Uzun yıllardır kalitemiz ve fiyatlarımız sizinle büyümemize yardımcı oluyor."
+                label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", history: "HİKAYEMİZ", contact: "İLETİŞİM",
+                welcome: "Christina's'a Hoş Geldiniz", welcomeSub: "Sizin için stil ve kalite", items: "ERKEK – KADIN GİYİM – TAKI – AKSESUAR ",
+                try: "Kokkari , Sisam , Yunanistan", btnContact: "Bize Ulaşın", privacy: "Gizlilik Politikası ve Çerezler",
+                c1t: "Yunan Ürünleri & El Yapımı Büyü", c1d: "Mağazamızda kalite ve fiyat uyum içinde buluşur. Geniş bir kadın ve erkek giyim koleksiyonu, el yapımı takılar ve aksesuarlar, her zaman bizi temsil eden kaliteyle sizleri bekliyor. Ayrıca, özen ve sevgiyle hazırlanmış seramik ürünlerimiz evinize neşeli bir dokunuş katacak. Mağazamızda kendiniz και sevdikleriniz için geniş bir hediye seçeneği de bulabilirsiniz.",
+                c3t: "Felsefemiz", c3d: "Sıcak, aile dostu ve samimi bir ortam, hoş bir atmosfer και pozitif enerji ile birlikte, sizlere en iyi hizmeti sunabilmek için önceliğimizdir.",
+                footer: "Uzun yıllardır kalitemiz ve fiyatlarımız büyümemize και size daha yakın olmamıza yardımcı oldu."
             }
         };
 
@@ -377,16 +374,16 @@
             document.getElementById('menu-home').innerText = t.home;
             document.getElementById('menu-photos').innerText = t.photos;
             document.getElementById('menu-products').innerText = t.products;
+            document.getElementById('menu-history').innerText = t.history;
             document.getElementById('menu-contact').innerText = t.contact;
 
-            document.getElementById('hero-welcome').innerText = t.welcome;
+            document.getElementById('hero-welcome').innerText = t.welcomeSub;
             document.getElementById('hero-items').innerText = t.items;
             document.getElementById('hero-try').innerText = t.try;
             document.getElementById('btn-contact-hero').innerText = t.btnContact;
 
             document.getElementById('card1-title').innerText = t.c1t;
             document.getElementById('card1-text').innerText = t.c1d;
-            document.getElementById('card2-text').innerText = t.c2t;
             document.getElementById('card3-title').innerText = t.c3t;
             document.getElementById('card3-text').innerText = t.c3d;
 
@@ -406,5 +403,22 @@
             }
         }
     </script>
+<div id="cookie-banner" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; background: rgba(0, 95, 115, 0.95); border: 1px solid #e9d8a6; padding: 20px; border-radius: 20px; z-index: 9999; display: none; text-align: center; backdrop-filter: blur(10px);">
+    <p style="margin: 0 0 15px 0; font-size: 0.9rem;">We use cookies to improve your experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies. <a href="privacy.html" style="color: #e9d8a6;">Read More</a></p>
+    <button onclick="acceptCookies()" style="background: #e9d8a6; color: #005f73; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer; font-weight: bold;">Accept</button>
+</div>
+
+<script>
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+    }
+</script>
 </body>
 </html>
