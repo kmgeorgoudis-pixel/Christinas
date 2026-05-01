@@ -121,10 +121,13 @@
         .story-img {
             flex: 1;
             max-width: 450px;
+            width: 100%; /* Διασφαλίζει ότι πιάνει το διαθέσιμο πλάτος */
+            height: auto;
             border-radius: 25px;
             border: 3px solid var(--gold);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             transition: 0.5s;
+            box-sizing: border-box; /* Περιλαμβάνει το border στο πλάτος */
         }
         .story-img:hover { transform: scale(1.02); }
 
@@ -138,7 +141,8 @@
 
         /* Mobile */
         @media (max-width: 768px) {
-            .story-block, .story-block:nth-child(even) { flex-direction: column; padding: 20px; }
+            .story-block, .story-block:nth-child(even) { flex-direction: column; padding: 20px; gap: 20px; }
+            .story-img { max-width: 100%; } /* Οι εικόνες δεν θα ξεπερνούν ποτέ το πλάτος της οθόνης */
             .nav-links {
                 display: none; flex-direction: column; top: 80px; width: 100%;
                 background: rgba(10, 147, 150, 0.98); border-radius: 20px; padding: 30px 0;
@@ -215,7 +219,7 @@
                         Our goal remains the best possible service for you, with love and style.
                     </p>
                 </div>
-                <img src="images/8.jpeg" alt="Today" class="story-img">
+                <img src="images/mother_daughter.jpeg" alt="Today" class="story-img">
             </div>
 
         </div>
@@ -263,9 +267,9 @@
             nl: {
                 label: "Nederlands 🇳🇱", home: "HOME", history: "HISTORIE", photos: "FOTO'S", products: "PRODUCTEN", contact: "CONTACT",
                 title: "Ons Verhaal",
-                b1t: "Het Begin", b1p: "De reis van Christina's begon 25 jaar geleden toen mijn moeder, Georgia, besloot een kleine, lieflijke winkel te openen in een prachtig steegje van Kokkari. Haar talent voor mode en haar ongelooflijke energie speelden een doorslaggevende rol in de evolutie van het bedrijf.",
+                b1t: "Het Begin", b1p: "De reis van Christina's begon 25 jaar geleden toen mijn moeder, Georgia, besloot een kleine, lieflijke winkel te openen in een prachtig steegje van Kokkari. Haar talent voor mode και haar ongelooflijke energie speelden een doorslaggevende rol in de evolutie van het bedrijf.",
                 b2t: "Uitbreiding (2019)", b2p: "In 2019 verhuisden we naar een nieuwe en grotere locatie aan het Kokkari-plein. Dit bood ruimte voor al de baanbrekende ideeën van Georgia - niet alleen in kleding maar op vele andere gebieden.",
-                b3t: "Moeder & Dochter", b3p: "Vandaag volg ik, Christina, met trots de voetsporen van mijn moeder. Samen en verenigd zetten we ons beste beentje voor, de weg van evolutie volgend met positieve energy.",
+                b3t: "Moeder & Dochter", b3p: "Vandaag volg ik, Christina, met trots de voetsporen van mijn moeder. Samen και verenigd zetten we ons beste beentje voor, de weg van evolutie volgend met positieve energy.",
                 final: "Bedankt dat u deel uitmaakt van onze geschiedenis!"
             },
             de: {
@@ -279,9 +283,9 @@
             tr: {
                 label: "Türkçe 🇹🇷", home: "ANASAYFA", history: "HİKAYEMİZ", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", contact: "İLETİŞİM",
                 title: "Hikayemiz",
-                b1t: "Başlangıç", b1p: "Christina's nın yolculuğu 25 yıl önce annem Georgia'nın Kokkari'nin güzel bir sokağında küçük, tatlı bir dükkan açmaya karar vermesiyle başladı. Modadaki yeteneği ve inanılmaz enerjisi dükkanın gelişiminde kilit rol oynadı.",
-                b2t: "Büyüme (2019)", b2p: "2019 yılında Kokkari meydanındaki yeni ve daha büyük yerimize taşındık. Bu, Georgia'nın sadece giyimde değil, pek çok alandaki öncü fikirlerine yer açtı.",
-                b3t: "Anne & Kız", b3p: "Bugün ben Christina, gururla annemin izinden gidiyorum. Birlikte ve birleşmiş olarak, gelişim yolunda pozitif enerjiyle en iyi halimizi ortaya koyuyoruz.",
+                b1t: "Başlangıç", b1p: "Christina's nın yolculuğu 25 yıl önce annem Georgia'nın Kokkari'nin güzel bir sokağında küçük, tatlı bir dükkan açmaya karar vermesiyle başladı. Modadaki yeteneği και inanılmaz enerjisi dükkanın gelişiminde kilit rol oynadı.",
+                b2t: "Büyüme (2019)", b2p: "2019 yılında Kokkari meydanındaki yeni και daha büyük yerimize taşındık. Bu, Georgia'nın sadece giyimde değil, pek çok alandaki öncü fikirlerine yer açtı.",
+                b3t: "Anne & Kız", b3p: "Bugün ben Christina, gururla annemin izinden gidiyorum. Birlikte και birleşmiş olarak, gelişim yolunda pozitif enerjiyle en iyi halimizi ortaya koyuyoruz.",
                 final: "Hikayemizin bir parçası olduğunuz için teşekkürler!"
             }
         };
