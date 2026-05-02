@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Christina's Shop</title>
+    <link rel="icon" type="image/png" href="images/favico.png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --petrol-dark: #005f73;
+            --petrol-medium: #0a9396;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --white: #ffffff;
+            --gold: #e9d8a6;
+            --cursive-font: 'Dancing Script', cursive;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Comfortaa', cursive;
+            background: radial-gradient(circle at top right, #94d2bd, #0a9396, #005f73);
+            background-attachment: fixed;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+       
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            z-index: 1000;
+        }
+
+        .logo { font-family: var(--cursive-font); font-weight: 700; font-size: 2.2rem; }
+        .nav-links a { font-family: var(--cursive-font); text-decoration: none; color: var(--white); margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { width: 30px; height: 3px; background: white; border-radius: 10px; }
+
+        /* Language Switcher */
+        .custom-select { position: relative; }
+        .select-selected { background: var(--glass-bg); padding: 8px 15px; border: 1px solid var(--glass-border); border-radius: 20px; cursor: pointer; font-size: 0.9rem; }
+        .select-items { position: absolute; background: rgba(10, 147, 150, 0.95); border-radius: 15px; top: 100%; display: none; z-index: 99; width: 150px; }
+        .select-items div { padding: 10px; cursor: pointer; }
+        .select-show { display: block; }
+
+        /* Products Header */
+        .header-section { text-align: center; padding: 140px 20px 40px; }
+        .header-section h1 { font-family: var(--cursive-font); font-size: 3.5rem; color: var(--gold); margin: 0; }
+
+        /* Products Grid */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            padding: 20px 5%;
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+        }
+
+        .product-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 12px;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            margin: 0;
+            font-weight: 500;
+            min-height: 2.4em; 
+        }
+
+        footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.3); }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav { width: 95%; padding: 10px 20px; }
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(10, 147, 150, 0.98); flex-direction: column; padding: 20px 0; border-radius: 20px; }
+            .nav-links.active { display: flex; }
+            .hamburger { display: flex; }
+            .header-section h1 { font-size: 2.5rem; }
+            .products-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .product-card img { height: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Christina's</div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" id="menu-home">HOME</a>
+            <a href="photos.html" id="menu-photos">PHOTOS</a>
+            <a href="products.html" id="menu-products">PRODUCTS</a>
+            <a href="history.html" id="menu-history">HISTORY</a>
+            <a href="contact.html" id="menu-contact">CONTACT</a>
+        </div>
+        <div class="custom-select" id="langSwitcher">
+            <div class="select-selected" id="currentLang">English 🇬🇧</div>
+            <div class="select-items" id="langOptions">
+                <div onclick="changeLang('en')">English 🇬🇧</div>
+                <div onclick="changeLang('gr')">Ελληνικά 🇬🇷</div>
+                <div onclick="changeLang('nl')">Nederlands 🇳🇱</div>
+                <div onclick="changeLang('de')">Deutsch 🇩🇪</div>
+                <div onclick="changeLang('tr')">Türkçe 🇹🇷</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header-section">
+        <h1 id="page-title">Our Products</h1>
+    </div>
+
+    <div class="products-container" id="products-grid">
+       
+    </div>
+
+    <footer>
+        <p id="footer-text">For many years, our quality and prices have helped us grow and come closer to you.</p>
+        <p style="font-size: 0.8rem;">&copy; 2026 Christinas Shop</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        
+        const productPhotos = [
+            "colors.jpg", "cosm.jpeg", "cosm2.jpeg", "door.jpeg", "kapela.jpg", 
+            "kaytakia.jpg", "kaytania2.jpg", "keramika.jpeg", "kolie.jpeg", 
+            "kremasta_exo.jpeg", "makrimanika.jpg", "mens.jpeg", "poukamisa.jpg", 
+            "out2.jpg", "rings.jpg", "royxa.jpeg", "tsantakia.jpg", "vizou.jpg", 
+            "vraxiola.jpg", "window.jpeg"
+        ];
+
+        const data = {
+            en: {
+                label: "English 🇬🇧", home: "HOME", photos: "PHOTOS", products: "PRODUCTS", history: "HISTORY", contact: "CONTACT",
+                title: "Our Products", footer: "Quality and style for you.",
+                desc: ["Summer Colors", "Cosmetics Selection", "Beauty Care", "Store Entrance", "Summer Hats", "Small Boxes", "Unique Kaftans", "Handmade Ceramics", "Elegant Necklaces", "Outdoor Display", "Long Sleeve Tops", "Men's Fashion", "Greek Shirts", "Fashion View", "Handmade Rings", "Fashion Collection", "Small Bags", "Summer Style", "Handmade Bracelets", "Our Window"]
+            },
+            gr: {
+                label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", history: "ΙΣΤΟΡΙΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
+                title: "Τα Προϊόντα μας", footer: "Ποιότητα και στυλ για εσάς.",
+                desc: ["Καλοκαιρινά Χρώματα", "Συλλογή Καλλυντικών", "Περιποίηση & Ομορφιά", "Η Είσοδός μας", "Καλοκαιρινά Καπέλα", "Μικρά Κουτάκια", "Μοναδικά Καφτάνια", "Χειροποίητα Κεραμικά", "Κομψά Κολιέ", "Εξωτερική Έκθεση", "Μακρυμάνικα Ρούχα", "Ανδρική Μόδα", "Ελληνικά Πουκάμισα", "Άποψη Μόδας", "Χειροποίητα Δαχτυλίδια", "Συλλογή Ρούχων", "Τσαντάκια", "Καλοκαιρινό Στυλ", "Χειροποίητα Βραχιόλια", "Η Βιτρίνα μας"]
+            },
+            nl: {
+                label: "Nederlands 🇳🇱", home: "HOME", photos: "FOTO'S", products: "PRODUCTEN", history: "HISTORIE", contact: "CONTACT",
+                title: "Onze Producten", footer: "Kwaliteit en stijl voor jou.",
+                desc: ["Zomerse Kleuren", "Cosmetica Selectie", "Schoonheidsverzorging", "Winkel Ingang", "Zomer Hoeden", "Kleine Doosjes", "Unieke Kaftans", "Handgemaakte Keramiek", "Elegante Kettingen", "Buiten Display", "Lange Mouwen Tops", "Herenmode", "Griekse Overhemden", "Mode Uitzicht", "Handgemaakte Ringen", "Mode Collectie", "Kleine Tasjes", "Zomerse Stijl", "Handgemaakte Armbanden", "Onze Etalage"]
+            },
+            de: {
+                label: "Deutsch 🇩🇪", home: "STARTSEITE", photos: "FOTOS", products: "PRODUKTE", history: "GESCHICHTE", contact: "KONTAKT",
+                title: "Unsere Produkte", footer: "Qualität und Stil für Sie.",
+                desc: ["Sommerfarben", "Kosmetikauswahl", "Schönheitspflege", "Ladeneingang", "Sommerhüte", "Kleine Schachteln", "Einzigartige Kaftane", "Handgemachte Keramik", "Elegante Halsketten", "Außenausstellung", "Langarm-Oberteile", "Herrenmode", "Griechische Hemden", "Modeansicht", "Handgemachte Ringe", "Modekollektion", "Kleine Taschen", "Sommerstil", "Handgemachte Armbänder", "Unser Schaufenster"]
+            },
+            tr: {
+                label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", history: "HİKAYEMİZ", contact: "İLETİŞİM",
+                title: "Ürünlerimiz", footer: "Sizin için kalite ve stil.",
+                desc: ["Yaz Renkleri", "Kozmetik Seçimi", "Güzellik Bakımı", "Mağaza Girişi", "Yazlık Şapkalar", "Küçük Kutular", "Eşsiz Kaftanlar", "El Yapımı Seramik", "Zarif Kolyeler", "Dış Sergi", "Uzun Kollu Üstler", "Erkek Modası", "Yunan Gömlekleri", "Moda Görünümü", "El Yapımı Yüzükler", "Moda Koleksiyonu", "Küçük Çantalar", "Yaz Stili", "El Yapımı Bileklikler", "Vitrinimiz"]
+            }
+        };
+
+        function renderProducts(lang) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            const descriptions = data[lang].desc;
+
+            productPhotos.forEach((photo, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.innerHTML = `
+                    <img src="images/${photo}" alt="Product">
+                    <p>${descriptions[index]}</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function changeLang(lang) {
+            const t = data[lang];
+            document.getElementById('currentLang').innerHTML = t.label;
+            document.getElementById('menu-home').innerText = t.home;
+            document.getElementById('menu-photos').innerText = t.photos;
+            document.getElementById('menu-products').innerText = t.products;
+            document.getElementById('menu-history').innerText = t.history;
+            document.getElementById('menu-contact').innerText = t.contact;
+            document.getElementById('page-title').innerText = t.title;
+            document.getElementById('footer-text').innerText = t.footer;
+            
+            renderProducts(lang);
+            document.getElementById('langOptions').classList.remove('select-show');
+        }
+
+        
+        renderProducts('en');
+
+        
+        const switcher = document.getElementById('langSwitcher');
+        switcher.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('langOptions').classList.toggle('select-show');
+        });
+
+        window.onclick = () => document.getElementById('langOptions').classList.remove('select-show');
+    </script>
+</body>
+</html>
