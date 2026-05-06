@@ -28,7 +28,6 @@
             overflow-x: hidden;
         }
 
-       
         nav {
             position: fixed;
             top: 20px;
@@ -45,7 +44,9 @@
             align-items: center;
             padding: 10px 30px;
             z-index: 1000;
+            
         }
+        .nav-links a:hover { color: var(--gold); }
 
         .logo { font-family: var(--cursive-font); font-weight: 700; font-size: 2.2rem; }
         .nav-links a { font-family: var(--cursive-font); text-decoration: none; color: var(--white); margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
@@ -79,7 +80,7 @@
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 15px;
+            padding: 10px; 
             text-align: center;
             backdrop-filter: blur(10px);
             transition: transform 0.3s ease;
@@ -89,22 +90,14 @@
 
         .product-card img {
             width: 100%;
-            height: 200px;
+            height: 250px; 
             object-fit: cover;
             border-radius: 15px;
-            margin-bottom: 12px;
-        }
-
-        .product-card p {
-            font-size: 0.9rem;
-            margin: 0;
-            font-weight: 500;
-            min-height: 2.4em; 
+            display: block;
         }
 
         footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.3); }
 
-        /* Mobile Styles */
         @media (max-width: 768px) {
             nav { width: 95%; padding: 10px 20px; }
             .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(10, 147, 150, 0.98); flex-direction: column; padding: 20px 0; border-radius: 20px; }
@@ -112,7 +105,7 @@
             .hamburger { display: flex; }
             .header-section h1 { font-size: 2.5rem; }
             .products-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .product-card img { height: 150px; }
+            .product-card img { height: 180px; }
         }
     </style>
 </head>
@@ -126,7 +119,7 @@
         <div class="nav-links" id="navLinks">
             <a href="index.html" id="menu-home">HOME</a>
             <a href="photos.html" id="menu-photos">PHOTOS</a>
-            <a href="products.html" id="menu-products">PRODUCTS</a>
+            <a href="products.html" id="menu-products" " style="color: var(--gold);"> PRODUCTS</a>
             <a href="history.html" id="menu-history">HISTORY</a>
             <a href="contact.html" id="menu-contact">CONTACT</a>
         </div>
@@ -147,7 +140,7 @@
     </div>
 
     <div class="products-container" id="products-grid">
-       
+        <!-- Images rendered here via JS -->
     </div>
 
     <footer>
@@ -163,7 +156,6 @@
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        
         const productPhotos = [
             "colors.jpg", "cosm.jpeg", "cosm2.jpeg", "door.jpeg", "kapela.jpg", 
             "kaytakia.jpg", "kaytania2.jpg", "keramika.jpeg", "kolie.jpeg", 
@@ -175,40 +167,35 @@
         const data = {
             en: {
                 label: "English 🇬🇧", home: "HOME", photos: "PHOTOS", products: "PRODUCTS", history: "HISTORY", contact: "CONTACT",
-                
+                title: "Our Products", footer: "Quality and style for you."
             },
             gr: {
                 label: "Ελληνικά 🇬🇷", home: "ΑΡΧΙΚΗ", photos: "ΦΩΤΟΓΡΑΦΙΕΣ", products: "ΠΡΟΪΟΝΤΑ", history: "ΙΣΤΟΡΙΑ", contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
-                
+                title: "Τα Προϊόντα μας", footer: "Ποιότητα και στυλ για εσάς."
             },
             nl: {
                 label: "Nederlands 🇳🇱", home: "HOME", photos: "FOTO'S", products: "PRODUCTEN", history: "HISTORIE", contact: "CONTACT",
-               
+                title: "Onze Producten", footer: "Kwaliteit en stijl voor jou."
             },
             de: {
                 label: "Deutsch 🇩🇪", home: "STARTSEITE", photos: "FOTOS", products: "PRODUKTE", history: "GESCHICHTE", contact: "KONTAKT",
-                title: "Unsere Produkte", footer: "Qualität und Stil für Sie.",
-                desc: ["Sommerfarben", "Kosmetikauswahl", "Schönheitspflege", "Ladeneingang", "Sommerhüte", "Kleine Schachteln", "Einzigartige Kaftane", "Handgemachte Keramik", "Elegante Halsketten", "Außenausstellung", "Langarm-Oberteile", "Herrenmode", "Griechische Hemden", "Modeansicht", "Handgemachte Ringe", "Modekollektion", "Kleine Taschen", "Sommerstil", "Handgemachte Armbänder", "Unser Schaufenster"]
+                title: "Unsere Produkte", footer: "Qualität und Stil für Sie."
             },
             tr: {
                 label: "Türkçe 🇹🇷", home: "ANASAYFA", photos: "FOTOĞRAFLAR", products: "ÜRÜNLER", history: "HİKAYEMİZ", contact: "İLETİŞİM",
-                
+                title: "Ürünlerimiz", footer: "Sizin için kalite ve stil."
             }
         };
 
-        function renderProducts(lang) {
+        function renderProducts() {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
-            const descriptions = data[lang].desc;
 
-            productPhotos.forEach((photo, index) => {
+            productPhotos.forEach((photo) => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.setAttribute('data-aos', 'fade-up');
-                card.innerHTML = `
-                    <img src="images/${photo}" alt="Product">
-                    <p>${descriptions[index]}</p>
-                `;
+                card.innerHTML = `<img src="images/${photo}" alt="Product">`;
                 grid.appendChild(card);
             });
         }
@@ -224,14 +211,13 @@
             document.getElementById('page-title').innerText = t.title;
             document.getElementById('footer-text').innerText = t.footer;
             
-            renderProducts(lang);
             document.getElementById('langOptions').classList.remove('select-show');
         }
 
-        
-        renderProducts('en');
+        // Initial Load
+        renderProducts();
+        changeLang('en');
 
-        
         const switcher = document.getElementById('langSwitcher');
         switcher.addEventListener('click', (e) => {
             e.stopPropagation();
